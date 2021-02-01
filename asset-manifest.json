@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/lunchTimeClient/static/css/main.8c8b27cf.chunk.css",
+    "main.js": "/lunchTimeClient/static/js/main.2c379f50.chunk.js",
+    "main.js.map": "/lunchTimeClient/static/js/main.2c379f50.chunk.js.map",
+    "runtime-main.js": "/lunchTimeClient/static/js/runtime-main.275099b9.js",
+    "runtime-main.js.map": "/lunchTimeClient/static/js/runtime-main.275099b9.js.map",
+    "static/js/2.b5e88ee1.chunk.js": "/lunchTimeClient/static/js/2.b5e88ee1.chunk.js",
+    "static/js/2.b5e88ee1.chunk.js.map": "/lunchTimeClient/static/js/2.b5e88ee1.chunk.js.map",
+    "static/js/3.bfdbb0c6.chunk.js": "/lunchTimeClient/static/js/3.bfdbb0c6.chunk.js",
+    "static/js/3.bfdbb0c6.chunk.js.map": "/lunchTimeClient/static/js/3.bfdbb0c6.chunk.js.map",
+    "index.html": "/lunchTimeClient/index.html",
+    "service-worker.js": "/lunchTimeClient/service-worker.js",
+    "service-worker.js.map": "/lunchTimeClient/service-worker.js.map",
+    "static/css/main.8c8b27cf.chunk.css.map": "/lunchTimeClient/static/css/main.8c8b27cf.chunk.css.map",
+    "static/js/2.b5e88ee1.chunk.js.LICENSE.txt": "/lunchTimeClient/static/js/2.b5e88ee1.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.275099b9.js",
+    "static/js/2.b5e88ee1.chunk.js",
+    "static/css/main.8c8b27cf.chunk.css",
+    "static/js/main.2c379f50.chunk.js"
+  ]
+}
