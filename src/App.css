@@ -5,12 +5,21 @@
   font-family:museo-sans, sans-serif;
 }
 
-h1{
+h1, h2{
   font-size:2rem;
   color:white;
   font-weight: initial;
   letter-spacing: 3px;
-  margin-left:5px;
+  margin-left:1px;
+}
+
+.profilPicture{
+  width:40px;
+}
+
+.h1UserPage{
+  color:black;
+  font-size:1.3rem;
 }
 
 .loginPage{
@@ -24,12 +33,44 @@ h1{
   display: grid;
   grid-template-rows: auto auto auto;
 }
+.profileName{
+  font-size:1.0rem;
+  margin-left:5px;
+}
+.navBarCenterLogo{
+  display: flex;
+flex-direction: inherit;
+justify-content: center;
+align-items: center;
+width: 100%;
+}
 .followUsText{
   font-size:1.3rem;
 }
 
 .loginHeader{
   color: white;
+}
+.businessHourText{
+  font-size:0.8rem;
+  margin: 5px;
+  position:absolute;
+  bottom: 0;
+  right: 5px;
+}
+.dailyOfferContainer{
+  width:100%;
+  display: flex;
+  justify-content: center;
+  align-items: first baseline;
+  padding: 30px;
+  box-sizing: border-box;
+  background-color: #d50057;
+  color:white;
+  position: relative;
+}
+.sideNav{
+  height:64px;
 }
 .loginFooter{
   color: white;
@@ -74,11 +115,21 @@ h1{
   width:40px;
   height:40px;
 }
+.logoSmall{
+  width:30px;
+  height:30px;
+}
 
 .loginText{
   font-size:2rem;
 }
 
+
+@media (max-width: 600px){
+  .sideNav{
+    height:56px;
+  }
+}
 @media (max-width: 520px) {
 
   .loginPage{
