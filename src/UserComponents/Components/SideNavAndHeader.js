@@ -9,19 +9,18 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-
 import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-
-
 import ProfilePic from '../../assets/Ellipse 96@2x.png';
-import Logo from '../../assets/logo_sa@2x.png'
+import Logo from '../../assets/logo_sa@2x.png';
+import {connect} from 'react-redux';
+import {userLogOut} from '../../Redux/Index.js';
 
 const drawerWidth = 240,
       menuCategories = ['Warenkorb', 'Bestellverlauf', 'Favouriten']
 
-export default function SideNav() {
+function SideNavAndHeader(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -88,6 +87,9 @@ export default function SideNav() {
           ))}
         </List>
         <Divider />
+        <ListItem button onClick={props.userLogOut}>
+          <ListItemText className="logOutText" primary="Abmelden"/> 
+        </ListItem>
       </Drawer>
 
     </div>
@@ -147,3 +149,18 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: 0,
     },
   }));
+
+  
+const mapStateToProps = state =>{
+  return {
+      isUserLogged: state.isUserLogged
+  }
+}
+
+const mapDispatchToProps = dispatch =>{
+  return {
+    userLogOut: () => dispatch(userLogOut())
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(SideNavAndHeader);

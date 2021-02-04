@@ -3,8 +3,11 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Alert from '@material-ui/lab/Alert';
+import {userLoginIn} from '../../Redux/Index.js';
+import {connect} from 'react-redux';
 
-export default function LoginForm() {
+
+function LoginForm(props) {
 
     let [emailLoginState, setEmailLoginState] = useState(""),
         [passwordLoginState, setPasswordLoginState] = useState(""),
@@ -45,13 +48,17 @@ export default function LoginForm() {
     const submitLogin = event => {
         event.preventDefault();
 
+        console.log(props.isUserLogged)
         if(validateTextFields()){
             setIsButtonLoginClickedState(isButtonLoginClickedState=true);
             setSubmitButtonState(submitButtonState=<CircularProgress size="30px" />);
     
             if(emailLoginState === "christian.lisik@gmx.net" && passwordLoginState === "ultima001!") {
                 initStatesAgain();
-                console.log("login is true");
+                props.userLoginIn();
+                console.log(props.isUserLogged);
+
+                
             } else {
                 initStatesAgain();
                 console.log("login is false");
@@ -138,3 +145,17 @@ export default function LoginForm() {
         </div>
     );
 }
+
+const mapStateToProps = state =>{
+    return {
+        isUserLogged: state.isUserLogged
+    }
+}
+
+const mapDispatchToProps = dispatch =>{
+    return {
+        userLoginIn: () => dispatch(userLoginIn())
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(LoginForm);
