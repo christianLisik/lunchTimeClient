@@ -36,9 +36,11 @@ const theme = createMuiTheme({ //Change main theme colors here
   },
 });
 
+
+
 const mapStateToProps = state =>{ //Redux: Get state if user is signed or not
   return {
-      isUserLogged: state.isUserLogged
+      isUserLogged: state.user.isUserLogged
   }
 }
 export default connect(mapStateToProps,null)(App); //Redux: No disptach necasssary

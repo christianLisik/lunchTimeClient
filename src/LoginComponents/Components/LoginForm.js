@@ -48,7 +48,6 @@ function LoginForm(props) {
     const submitLogin = event => {
         event.preventDefault();
 
-        console.log(props.isUserLogged)
         if(validateTextFields()){
             setIsButtonLoginClickedState(isButtonLoginClickedState=true);
             setSubmitButtonState(submitButtonState=<CircularProgress size="30px" />);
@@ -72,6 +71,7 @@ function LoginForm(props) {
     return (
         <div className="loginForm">
             <span className="loginText">Anmeldung</span>
+            <hr />
             <div className="loginFormContainer">
                 <form noValidate onSubmit={submitLogin}>
                     <TextField
@@ -148,7 +148,7 @@ function LoginForm(props) {
 
 const mapStateToProps = state =>{
     return {
-        isUserLogged: state.isUserLogged
+        isUserLogged: state.user.isUserLogged
     }
 }
 

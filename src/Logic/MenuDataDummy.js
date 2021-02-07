@@ -13,6 +13,7 @@ export const menuData = () => {
                     ingredients: "Schweinefleisch, Nudeln",
                     hot: false,
                     amount:0,
+                    favourite:false,
                     pictureLink: "../assets/carbonara.jpg"
 
                 },
@@ -23,6 +24,7 @@ export const menuData = () => {
                     ingredients: "Brokoli, Karotten, Paprika",
                     hot: false,
                     amount:0,
+                    favourite:false,
                     pictureLink: "../assets/pesto.jpg"
                 },
                 {
@@ -32,6 +34,7 @@ export const menuData = () => {
                     ingredients: "Ei, Vanille, Sahne (30%)",
                     hot: true,
                     amount:0,
+                    favourite:false,
                     pictureLink: "../assets/pfankuchen.jpg"
                 },
                 {
@@ -41,6 +44,7 @@ export const menuData = () => {
                     ingredients: "Huhn",
                     hot: true,
                     amount:0,
+                    favourite:false,
                     pictureLink: "../assets/chickenwings.jpg"
                 },
             ]
@@ -52,49 +56,59 @@ export const menuData = () => {
             menu:[
                 {
                     menuName:"D1 Roter Curry mit Huhn und Gemüse (scharf)",
-                    price:"11.00 EUR",
+                    price:11.00,
                     typ:"",
-                    ingredients: "Huhn, Paprika, Karotten, Pilze",
+                    ingredients: "Huhn",
                     hot: true,
                     amount:0,
-                    pictureLink: "https://cdn.pixabay.com/photo/2020/02/02/15/09/duck-breast-4813264_640.jpg"
+                    favourite:false,
+                    pictureLink: "https://cdn.pixabay.com/photo/2020/02/02/15/09/duck-breast-4813264_640.jpg",
+                    show:true
 
                 },
                 {
                     menuName:"D2 Curry mit Soja und Gemüse",
-                    price:"5.50 EUR",
-                    typ:"vegan, halal, vegetarisch",
-                    ingredients: "Soja, Brokoli, Karotten, Pilze",
+                    price:5.50,
+                    typ:"vegan",
+                    ingredients: "Soja",
                     hot: false,
                     amount:0,
-                    pictureLink: 'https://cdn.pixabay.com/photo/2018/08/14/05/49/green-curry-3604721_640.jpg'
+                    favourite:false,
+                    pictureLink: 'https://cdn.pixabay.com/photo/2018/08/14/05/49/green-curry-3604721_640.jpg',
+                    show:true
                 },
                 {
                     menuName:"D3 Reispfanne mit Ei und Gemüse",
-                    price:"4.80 EUR",
-                    typ:"vegetarisch, halal",
-                    ingredients: "Ei, Brokoli, Pilze, Karotten",
+                    price:4.80,
+                    typ:"vegetarisch",
+                    ingredients: "Pilze",
                     hot: false,
                     amount:0,
-                    pictureLink: "https://cdn.pixabay.com/photo/2020/01/17/16/42/food-4773380_640.jpg"
+                    favourite:false,
+                    pictureLink: "https://cdn.pixabay.com/photo/2020/01/17/16/42/food-4773380_640.jpg",
+                    show:true
                 },
                 {
                     menuName:"D4 Frühlingsrollen mit Gemüse",
-                    price:"4.00 EUR",
-                    typ:"vegan, vegetarisch, halal",
-                    ingredients: "Frühlingsteig, Pilze, Sojasprossen",
+                    price:4.00,
+                    typ:"vegan",
+                    ingredients: "Sojasprossen",
                     hot: false,
                     amount:0,
-                    pictureLink: "https://cdn.pixabay.com/photo/2015/06/15/03/48/gourmet-809866_640.jpg"
+                    favourite:false,
+                    pictureLink: "https://cdn.pixabay.com/photo/2015/06/15/03/48/gourmet-809866_640.jpg",
+                    show:true
                 },
                 {
                     menuName:"D5 Nudelpfanne mit Ei mit Gemüse",
-                    price:"4.50 EUR",
-                    typ:"vegan, vegetarisch, halal",
-                    ingredients: "Ei, Pilze, Brokoli, Sojasprossen",
+                    price:4.50,
+                    typ:"halal",
+                    ingredients: "Ei",
                     hot: false,
                     amount:0,
-                    pictureLink: "https://cdn.pixabay.com/photo/2019/08/30/09/17/noodles-4440831_640.jpg"
+                    favourite:false,
+                    pictureLink: "https://cdn.pixabay.com/photo/2019/08/30/09/17/noodles-4440831_640.jpg",
+                    show:true
                 },
             ]
         }

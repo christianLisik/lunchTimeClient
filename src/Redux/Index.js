@@ -1,1 +1,2 @@
-export {userLoginIn,userLogOut,userCanOrder,userCanNotOrder} from './ControlUserState/Actions.js'
+export {userLoginIn,userLogOut,userCanOrder,userCanNotOrder} from './ControlUserState/Actions.js';
+export {searchFood,priceFilterFood,typFilterFood,ingridientsFilterFood} from './ControlFoodState/Actions.js';

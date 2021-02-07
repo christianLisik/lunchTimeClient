@@ -13,6 +13,15 @@ h1, h2{
   margin-left:10px;
 }
 
+
+.searchBarFood{
+  max-width:720px;
+  width:100%;
+  margin:0px auto;
+  padding:15px;
+  box-sizing: border-box;
+}
+
 .logOutText{
   text-align: right;
 }
@@ -60,8 +69,12 @@ width: 100%;
   position: relative;
 overflow: hidden;
 height:160px;
+border-top-left-radius: 10px;
+border-top-right-radius: 10px;
 }
-
+.success-toast{
+background-color:blue;
+}
 
 
 .showMenuContainerMenuDescribing{
@@ -103,15 +116,32 @@ padding: 5px;
 border-radius: 5px;
 }
 
-.showMenu{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  grid-gap: 15px;
-  padding: 15px;
-  box-sizing:border-box
+.filderFood{
+  padding:15px;
+  box-sizing:border-box;
+  background-color:#f0f8ff;
+  margin:15px;
+  border-radius:10px;
 }
 
+.countFoodText{
+  margin:15px;
+}
+.showMenu{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 15px;
+  padding: 15px;
+  box-sizing:border-box;
+overflow: auto;
 
+}
+
+.contentFood{
+  display: grid;
+  grid-template-columns: 1fr 75%;
+  padding:15px;
+}
 .followUsText{
   font-size:1.3rem;
 }
@@ -152,10 +182,22 @@ flex-direction: column;
   height:64px;
 }
 .loginFooter{
+  display:none;
+}
+.loginFooter{
   color: white;
 }
+hr{
+  border: none;
+  height: 1px;
+  color: #cacaca; /* old IE */
+  background-color: #cacaca; /* Modern Browsers */
+  width:100%;
+  margin:10px auto;
+
+}
 .loginForm{
-  width:380px;
+  width:360px;
   padding: 15px;
   margin: 50px auto;
   box-sizing: border-box;
@@ -202,7 +244,51 @@ flex-direction: column;
 .loginText{
   font-size:2rem;
 }
+.filterButton{
+  display:none;
+  position:fixed;
+  bottom:15px;
+  right:15px;
+  padding:25px;
+  background: #d50057;
+  border-radius: 50%;
+  border:none;
+  text-decoration: none;
+  z-index: 999;
+  box-shadow:0px 0px 10px black;
+	cursor: pointer;
+	outline: inherit;
+}
+.FilterFoodModalContent{
+  background-color: #f0f8ff;
+  border-radius:10px;
+  position: relative;
+  border:none;
+  outline: inherit;
+}
 
+.closeModalIcon{
+  position: absolute;
+  top:10px;
+  right:20px;
+  font-size:35px;
+  cursor:pointer;
+}
+
+@media (max-width:680px){
+  
+  .filterFood{
+    display:none;
+  }
+  .filterButton{
+    display: block;
+  }
+  .contentFood{
+    display: grid;
+    grid-template-columns: 100%;
+    padding:15px;
+  }
+}
 
 @media (max-width: 600px){
   .sideNav{
@@ -210,6 +296,19 @@ flex-direction: column;
   }
 }
 @media (max-width: 520px) {
+
+  .loginFooter{
+    display:block;
+  }
+
+  .dailyOfferContainer{
+    background-image: url("./assets/subheader.png");
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: 100%;
+   color: white;;
+   box-shadow: inset 0px 20px 200px black;
+  }
 
   .loginPage{
     background-image: unset;
