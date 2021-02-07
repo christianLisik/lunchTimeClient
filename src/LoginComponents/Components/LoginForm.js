@@ -5,6 +5,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import Alert from '@material-ui/lab/Alert';
 import {userLoginIn} from '../../Redux/Index.js';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 
 
 function LoginForm(props) {
@@ -138,7 +139,7 @@ function LoginForm(props) {
                         size="large"
                         color="primary"
                     >
-                        Passwort vergessen?
+                       <Link className="link" to="/forgotPassword">Passwort vergessen?</Link> 
                     </Button>
                 </form>
             </div>

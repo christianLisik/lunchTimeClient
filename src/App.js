@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import LoginPage from './LoginComponents/LoginPage.js';
+import LoginPage from './LoginComponents/Pages/LoginPage.js';
 import UserPage from './UserComponents/UserPage.js'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'; 
 import {connect} from 'react-redux';

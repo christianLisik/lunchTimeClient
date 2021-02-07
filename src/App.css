@@ -290,6 +290,11 @@ hr{
   }
 }
 
+.link{
+  text-decoration: none;
+  color:black;
+}
+
 @media (max-width: 600px){
   .sideNav{
     height:56px;
