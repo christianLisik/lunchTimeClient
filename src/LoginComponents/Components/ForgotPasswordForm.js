@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const ForgotPasswordForm = () => {
     return (
@@ -10,7 +10,7 @@ const ForgotPasswordForm = () => {
             <span className="loginText">Passwort vergessen?</span>
             <hr />
             <div className="loginFormContainer">
-            <form noValidate>
+                <form noValidate>
                     <TextField
                         value=""
                         error=""
@@ -35,7 +35,7 @@ const ForgotPasswordForm = () => {
                         id="email repeat"
                     />
                     <div className="loginErrorText">
-                    {/* Error MEssages Box */}
+                        {/* Error MEssages Box */}
                     </div>
                     <br />
                     <br />
@@ -56,7 +56,7 @@ const ForgotPasswordForm = () => {
                         size="large"
                         color="primary"
                     >
-                       <Link className="link" to="/">Zurück zu Login</Link> 
+                        <Link className="link" to="/">Zurück zu Login</Link>
                     </Button>
                 </form>
             </div>

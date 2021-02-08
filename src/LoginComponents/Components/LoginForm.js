@@ -1,11 +1,11 @@
-import { React, useState} from 'react';
+import { React, useState } from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Alert from '@material-ui/lab/Alert';
-import {userLoginIn} from '../../Redux/Index.js';
-import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
+import { userLoginIn } from '../../Redux/Index.js';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 
 function LoginForm(props) {
@@ -13,33 +13,33 @@ function LoginForm(props) {
     let [emailLoginState, setEmailLoginState] = useState(""),
         [passwordLoginState, setPasswordLoginState] = useState(""),
         [isButtonLoginClickedState, setIsButtonLoginClickedState] = useState(false),
-        [isTextFieldEmailLoginFalse,setIsTextFieldEmailLoginFalse] = useState(false),
-        [isTextFieldPasswordLoginFalse,setIsTextFieldPasswordLoginFalse] = useState(false),
+        [isTextFieldEmailLoginFalse, setIsTextFieldEmailLoginFalse] = useState(false),
+        [isTextFieldPasswordLoginFalse, setIsTextFieldPasswordLoginFalse] = useState(false),
         [submitButtonState, setSubmitButtonState] = useState("Anmelden"),
-        [errorLoginTextState,setErrorLoginTextState] = useState("");
+        [errorLoginTextState, setErrorLoginTextState] = useState("");
 
     //Set all initilized states to the values how they were initilized first. Is needed to remove all errror messages if user clicked on the submit button to send the request
-    const initStatesAgain= () =>{
+    const initStatesAgain = () => {
 
-        setIsTextFieldEmailLoginFalse(isTextFieldEmailLoginFalse=false);
-        setIsTextFieldPasswordLoginFalse(isTextFieldPasswordLoginFalse=false);
-        setErrorLoginTextState(errorLoginTextState="");
-        setSubmitButtonState(submitButtonState="Anmelden");
-        setIsButtonLoginClickedState(isButtonLoginClickedState=false);
+        setIsTextFieldEmailLoginFalse(isTextFieldEmailLoginFalse = false);
+        setIsTextFieldPasswordLoginFalse(isTextFieldPasswordLoginFalse = false);
+        setErrorLoginTextState(errorLoginTextState = "");
+        setSubmitButtonState(submitButtonState = "Anmelden");
+        setIsButtonLoginClickedState(isButtonLoginClickedState = false);
     }
 
     //Check if textfields for Email and Password are empty. If empty show error message that they are empty if not delete error message
-    const validateTextFields = ()=>{
+    const validateTextFields = () => {
 
-        if(emailLoginState.length===0){
-            setIsTextFieldEmailLoginFalse(isTextFieldEmailLoginFalse=true);
+        if (emailLoginState.length === 0) {
+            setIsTextFieldEmailLoginFalse(isTextFieldEmailLoginFalse = true);
         }
-        if(passwordLoginState.length===0){
-            setIsTextFieldPasswordLoginFalse(isTextFieldPasswordLoginFalse=true)
+        if (passwordLoginState.length === 0) {
+            setIsTextFieldPasswordLoginFalse(isTextFieldPasswordLoginFalse = true)
         }
-        if(emailLoginState.length !==0 && passwordLoginState.length !== 0){
-            setIsTextFieldEmailLoginFalse(isTextFieldEmailLoginFalse=false);
-            setIsTextFieldPasswordLoginFalse(isTextFieldPasswordLoginFalse=false);
+        if (emailLoginState.length !== 0 && passwordLoginState.length !== 0) {
+            setIsTextFieldEmailLoginFalse(isTextFieldEmailLoginFalse = false);
+            setIsTextFieldPasswordLoginFalse(isTextFieldPasswordLoginFalse = false);
             return true;
         }
         return false;
@@ -49,23 +49,23 @@ function LoginForm(props) {
     const submitLogin = event => {
         event.preventDefault();
 
-        if(validateTextFields()){
-            setIsButtonLoginClickedState(isButtonLoginClickedState=true);
-            setSubmitButtonState(submitButtonState=<CircularProgress size="30px" />);
-    
-            if(emailLoginState === "christian.lisik@gmx.net" && passwordLoginState === "ultima001!") {
+        if (validateTextFields()) {
+            setIsButtonLoginClickedState(isButtonLoginClickedState = true);
+            setSubmitButtonState(submitButtonState = <CircularProgress size="30px" />);
+
+            if (emailLoginState === "christian.lisik@gmx.net" && passwordLoginState === "ultima001!") {
                 initStatesAgain();
                 props.userLoginIn();
                 console.log(props.isUserLogged);
 
-                
+
             } else {
                 initStatesAgain();
                 console.log("login is false");
-                setErrorLoginTextState(errorLoginTextState= <Alert severity="error">E-Mail oder Passwort falsch</Alert>);
+                setErrorLoginTextState(errorLoginTextState = <Alert severity="error">E-Mail oder Passwort falsch</Alert>);
             }
-        }else{
-            setErrorLoginTextState(errorLoginTextState= <Alert severity="error">Bitte füllen Sie die rotmarkierten Felder aus</Alert>);
+        } else {
+            setErrorLoginTextState(errorLoginTextState = <Alert severity="error">Bitte füllen Sie die rotmarkierten Felder aus</Alert>);
         }
     }
 
@@ -80,8 +80,8 @@ function LoginForm(props) {
                         error={isTextFieldEmailLoginFalse}
                         onChange={event => {
                             setIsTextFieldEmailLoginFalse(
-                                isTextFieldEmailLoginFalse=false
-                                );
+                                isTextFieldEmailLoginFalse = false
+                            );
                             setEmailLoginState(
                                 emailLoginState = event.target.value
                             )
@@ -101,8 +101,8 @@ function LoginForm(props) {
                         error={isTextFieldPasswordLoginFalse}
                         onChange={event => {
                             setIsTextFieldPasswordLoginFalse(
-                                isTextFieldPasswordLoginFalse=false
-                                );
+                                isTextFieldPasswordLoginFalse = false
+                            );
                             setPasswordLoginState(
                                 passwordLoginState = event.target.value
                             )
@@ -139,7 +139,7 @@ function LoginForm(props) {
                         size="large"
                         color="primary"
                     >
-                       <Link className="link" to="/forgotPassword">Passwort vergessen?</Link> 
+                        <Link className="link" to="/forgotPassword">Passwort vergessen?</Link>
                     </Button>
                 </form>
             </div>
@@ -147,16 +147,16 @@ function LoginForm(props) {
     );
 }
 
-const mapStateToProps = state =>{
+const mapStateToProps = state => {
     return {
         isUserLogged: state.user.isUserLogged
     }
 }
 
-const mapDispatchToProps = dispatch =>{
+const mapDispatchToProps = dispatch => {
     return {
         userLoginIn: () => dispatch(userLoginIn())
     }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(LoginForm);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

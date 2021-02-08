@@ -1,43 +1,25 @@
 import React from 'react';
 import SideNavAndHeader from './Components/SideNavAndHeader.js';
-import SubHeader from './Components/SubHeader.js';
-import ShowMenu from './Components/ShowMenu.js';
-import SearchBarFood from './Components/SearchBarFood.js';
-import FilterFood from './Components/FilterFood.js';
-import FilterFoodModal from './Components/FilterFoodModal.js'
-import {connect} from 'react-redux';
+import ShowUserPage from './Components/ShowUserPage.js';
+import ShowUserCheckout from './Components/ShowUserCheckout.js';
+import {Route, BrowserRouter as Router,Switch} from 'react-router-dom';
 
-const UserPage = (props) => {
+const UserPage = () => {
 
     return (
+    <Router>
         <main className="userPage">
             
             <SideNavAndHeader/>
-            <SubHeader /> {/* Subheader shows the current dateTime. For Example Monday/Thai-Tuesday/Wendesday ....*/}
-            {
-                props.canUserOrder?
-                <div>
-                    <SearchBarFood />
-                    <div className="contentFood">
-                        <div className="filterFood">
-                            <FilterFood/>
-                        </div> 
-                        <ShowMenu />
-                    </div>
-                    <FilterFoodModal />
-                </div>
-                :
-                <div className="showNoMenu"><b>Wir öffnen demnächst</b><p> Unsere Öffnungszeiten: Mo-Fr 7.00 - 11:30 Uhr</p></div>
-            }
+                <Switch>
+                    <Route path="/" exact component={ShowUserPage}/>
+                    <Route path="/showUserCheckout" component={ShowUserCheckout}/>
+                </Switch>
         </main>
-        
+    </Router> 
     );
 };
 
 
-const mapStateToProps = state =>{
-    return {
-        canUserOrder: state.user.canUserOrder
-    }
-  }
-  export default connect(mapStateToProps,null)(UserPage);
+
+  export default UserPage;

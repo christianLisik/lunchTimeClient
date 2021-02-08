@@ -1,47 +1,48 @@
-export const showCurrentDay=()=>{
-    //let currentDateTimeAsIndex=new Date().getDate()-1; //Get current day as index. That means Monday = 0; Tuesday = 1, Wednesday = 2...
-    let currentDateTimeAsIndex=1;//Thai Tuesday REMOVE LATER!!!
+export const showCurrentDay = () => {
+    let currentDateTimeAsIndex = new Date().getDay() - 1; //Get current day as index. That means Monday = 0; Tuesday = 1, Wednesday = 2...
 
-    if (typeof(dailyOfferMenue[currentDateTimeAsIndex]) !== 'undefined' && dailyOfferMenue[currentDateTimeAsIndex] != null){
+    console.log(currentDateTimeAsIndex);
+
+    if (typeof (dailyOfferMenue[currentDateTimeAsIndex]) !== 'undefined' && dailyOfferMenue[currentDateTimeAsIndex] != null) {
         return dailyOfferMenue[currentDateTimeAsIndex].showDay;
-    }else{
+    } else {
         return "geschlossen"
     }
 }
 
-export const getCurrentDate=()=>{
-    return 1; //REMOVE LATER one STANDS FOR TUESDAY
+export const getCurrentDate = () => {
+    return new Date().getDay() - 1; //REMOVE LATER one STANDS FOR TUESDAY
 }
 
 
-export const dailyOfferMenue=[
+export const dailyOfferMenue = [
     {
-        day:"Montag",
-        showDay:"Montag",
+        day: "Montag",
+        showDay: "Montag",
     },
     {
-        day:"Dienstag",
-        showDay:"Thai-Tuesday",
+        day: "Dienstag",
+        showDay: "Thai-Tuesday",
     },
     {
-        day:"Mittwoch",
-        showDay:"Mittwoch"
+        day: "Mittwoch",
+        showDay: "Mittwoch"
     },
     {
-        day:"Donnerstag",
-        showDay:"Dönerstag"
+        day: "Donnerstag",
+        showDay: "Dönerstag"
     },
     {
-        day:"Freitag",
-        showDay:"Freddy-Friday"
+        day: "Freitag",
+        showDay: "Freddy-Friday"
     },
     {
-        day:"Samstag",
-        showDay:"geschlossen"
+        day: "Samstag",
+        showDay: "geschlossen"
     },
     {
-        day:"Sonntag",
-        showDay:"geschlossen"
+        day: "Sonntag",
+        showDay: "geschlossen"
     },
 
 ]

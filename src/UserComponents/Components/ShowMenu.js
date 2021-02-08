@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { isFoodFilterEmpty } from '../../Logic/IsFoodFilterEmpty.js';
 import Button from '@material-ui/core/Button';
@@ -10,16 +10,24 @@ import { countFood } from '../../Logic/CountFood.js'
 import StarIcon from '@material-ui/icons/Star';
 import { SUCESS_ADDED_PRODUCT, SUCESS_ADDED_FAVOURITE } from '../../Toasts/ToastsMessages.js';
 import { connect } from 'react-redux';
+import {incrementFood,decrementFood} from '../../Redux/Index.js';
 
 
 
 const ShowMenu = (props) => {
 
-    const dataMenu = props.getFood, //Save all the menu food data for today into an json object
-        buttonsDisabled = new Array(dataMenu.length).fill(true); //Initalization for buttons 'add to cart'. Set them all into disable (true). Only if user increment his order the status of array change.
+
+    const dataMenu = props.getFood  , //Save all the menu food data for today into an json object
+        buttonsDisabled = new Array(dataMenu.length).fill(true), //Initalization for buttons 'add to cart'. Set them all into disable (true). Only if user increment his order the status of array change.
+        buttonCounter=new Array(dataMenu.length).fill(0);
 
     let [dataMenuState, setDataMenuState] = useState(dataMenu),
-        [disableButtonAddCartState, setDisableButtonAddCartState] = useState(buttonsDisabled);
+        [disableButtonAddCartState, setDisableButtonAddCartState] = useState(buttonsDisabled),
+        [buttonCounterState,setButtonCounterState]=useState(buttonCounter);
+
+        useEffect(() => {
+          // eslint-disable-next-line react-hooks/exhaustive-deps
+          }, [dataMenuState]);
 
     return (
         <div>
@@ -38,7 +46,7 @@ const ShowMenu = (props) => {
                                         <ButtonGroup style={{ backgroundColor: '#fff' }} color="primary" aria-label="outlined primary button group">
                                             <Button style={{ color: '#fff', backgroundColor: '#d50057' }} onClick={decrement.bind(index)}>-</Button>
                                             <Button style={{ color: '#000' }}>
-                                                {values.amount}
+                                                {buttonCounterState[index]}
                                             </Button>
                                             <Button style={{ color: '#fff', backgroundColor: '#d50057' }} onClick={increment.bind(index)}>+</Button>
                                         </ButtonGroup>
@@ -62,52 +70,66 @@ const ShowMenu = (props) => {
 
     function addToFavourits(e) {
         const newDataMenuStateFav = [...dataMenuState];
+      
 
         newDataMenuStateFav[this].favourite = !newDataMenuStateFav[this].favourite;
         setDataMenuState(newDataMenuStateFav);
 
         if (newDataMenuStateFav[this].favourite) {
-            SUCESS_ADDED_FAVOURITE('Favourit hinzugefügt');
+            SUCESS_ADDED_FAVOURITE(dataMenuState[this].menuName);
         }
 
     }
 
     function addToCart(e) {
-        const newDataMenuStateInc = [...dataMenuState],
-            enableButtonAddCartState = [...disableButtonAddCartState];
+     
+        props.incrementFood({indexMenu:this.index,amount:buttonCounterState[this.index]});
 
-        newDataMenuStateInc[this.index].amount = 0;
-        enableButtonAddCartState[this.index] = true;
 
-        setDataMenuState(newDataMenuStateInc);
-        setDisableButtonAddCartState(enableButtonAddCartState);
+        const newDataMenuStateInc = [...buttonCounterState],
+              enableButtonAddCartState = [...disableButtonAddCartState];
 
-        SUCESS_ADDED_PRODUCT('In Warenkorb hinzugefügt');
+        SUCESS_ADDED_PRODUCT(dataMenuState[this.index].menuName,newDataMenuStateInc[this.index]);  
+          
+                newDataMenuStateInc[this.index] = 0;
+                enableButtonAddCartState[this.index] = true;
+    
+                setButtonCounterState(newDataMenuStateInc);
+                setDisableButtonAddCartState(enableButtonAddCartState);
+      
+            
+  
+
+
+                
+
+
     }
 
     function increment(e) {
 
-        const newDataMenuStateInc = [...dataMenuState],
+        const newDataMenuStateInc = [...buttonCounterState],
             enableButtonAddCartState = [...disableButtonAddCartState];
 
-        newDataMenuStateInc[this].amount = newDataMenuStateInc[this].amount + 1;
+        newDataMenuStateInc[this] = newDataMenuStateInc[this] + 1;
         enableButtonAddCartState[this] = false;
 
-        setDataMenuState(newDataMenuStateInc);
+        setButtonCounterState(newDataMenuStateInc);
         setDisableButtonAddCartState(enableButtonAddCartState);
+       
 
     }
 
     function decrement(e) {
-        const newDataMenuStateDec = [...dataMenuState];
+        const newDataMenuStateDec = [...buttonCounterState];
         disableButtonAddCartState = [...disableButtonAddCartState];
 
-        if (newDataMenuStateDec[this].amount > 0) {
-            newDataMenuStateDec[this].amount = newDataMenuStateDec[this].amount - 1;
-            setDataMenuState(newDataMenuStateDec);
+        if (newDataMenuStateDec[this] > 0) {
+            newDataMenuStateDec[this] = newDataMenuStateDec[this] - 1;
+            setButtonCounterState(newDataMenuStateDec);
 
         }
-        if (newDataMenuStateDec[this].amount === 0) {
+        if (newDataMenuStateDec[this] === 0) {
             disableButtonAddCartState[this] = true;
             setDisableButtonAddCartState(disableButtonAddCartState);
         }
@@ -117,14 +139,22 @@ const ShowMenu = (props) => {
 }
 
 
+
 const mapStateToProps = state => {
     return {
         getFood: state.food
     }
 }
 
+const mapDispatchToProps = dispatch =>{
+    return {
+        incrementFood: value => dispatch(incrementFood(value)),
+        decrementFood: dataMenuState => dispatch(decrementFood(dataMenuState))
+    }
+}
 
 
-export default connect(mapStateToProps, null)(ShowMenu);
+
+export default connect(mapStateToProps, mapDispatchToProps)(ShowMenu);
 
 

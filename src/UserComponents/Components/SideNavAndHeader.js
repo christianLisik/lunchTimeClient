@@ -16,14 +16,19 @@ import ProfilePic from '../../assets/Ellipse 96@2x.png';
 import Logo from '../../assets/logo_sa@2x.png';
 import {connect} from 'react-redux';
 import {userLogOut} from '../../Redux/Index.js';
+import {Link} from 'react-router-dom';
+import {getOrderdFoodCount} from '../../Logic/GetOrderdFoodCount.js'
 
 const drawerWidth = 240,
-      menuCategories = ['Warenkorb', 'Bestellverlauf', 'Favouriten']
+      menuCategories = ['Warenkorb', 'Bestellverlauf', 'Favouriten'];
+ 
+
 
 function SideNavAndHeader(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -53,14 +58,17 @@ function SideNavAndHeader(props) {
             <img className="logoSmall" alt="LUNCHTIME_Logo" src={Logo} />
             <h1 className="h1UserPage"><b>Lunch</b>Time</h1>
           </div>
-          <IconButton
-          color="inherit"
-          edge="end"
-          >
+
+        
+            <IconButton color="inherit" edge="end">
               
-             <ShoppingCartIcon />
-          </IconButton>
-         
+                <Link className="link" to="/showUserCheckout"> 
+                  {getOrderdFoodCount(props.getFood)>0?<div className="foodCount">{getOrderdFoodCount(props.getFood)}</div>:null }
+                  <ShoppingCartIcon />
+                </Link>
+              
+            </IconButton>
+
         </Toolbar>
       </AppBar>
       <Drawer
@@ -153,7 +161,8 @@ const useStyles = makeStyles((theme) => ({
   
 const mapStateToProps = state =>{
   return {
-      isUserLogged: state.isUserLogged
+      isUserLogged: state.isUserLogged,
+      getFood: state.food
   }
 }
 

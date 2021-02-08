@@ -26,6 +26,18 @@ h1, h2{
   text-align: right;
 }
 
+.showUserPaymentCartText{
+  font-size:3rem;
+  display: flex;
+  margin:30px;
+  justify-content: center;
+}
+
+.cartHeader{
+  display: flex;
+  justify-content: center;
+}
+
 .profilPicture{
   width:40px;
 }
@@ -33,6 +45,13 @@ h1, h2{
 .h1UserPage{
   color:black;
   font-size:1.3rem;
+}
+.h2CartPage{
+  font-size:2rem;
+  color:black;
+  font-weight: initial;
+  letter-spacing: 3px;
+  margin-left:10px;
 }
 
 .loginPage{
@@ -46,16 +65,18 @@ h1, h2{
   display: grid;
   grid-template-rows: auto auto auto;
 }
+
+
 .profileName{
   font-size:1.0rem;
   margin-left:5px;
 }
 .navBarCenterLogo{
   display: flex;
-flex-direction: inherit;
-justify-content: center;
-align-items: center;
-width: 100%;
+  flex-direction: inherit;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 .showMenu .showMenuContainer img{
   width:120%;
@@ -67,10 +88,10 @@ width: 100%;
 .showMenuContainerPicture{
   box-shadow: inset 0px 20px 100px black;
   position: relative;
-overflow: hidden;
-height:160px;
-border-top-left-radius: 10px;
-border-top-right-radius: 10px;
+  overflow: hidden;
+  height:160px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 .success-toast{
 background-color:blue;
@@ -79,8 +100,8 @@ background-color:blue;
 
 .showMenuContainerMenuDescribing{
   padding: 10px;
-background-color: aliceblue;
-height:50px;
+  background-color: aliceblue;
+  height:50px;
 }
 
 .showMenuContainerCartFavourit{
@@ -112,8 +133,8 @@ height:50px;
   font-weight: bold;
   font-size:0.8rem;
   background: #d50057;
-padding: 5px;
-border-radius: 5px;
+  padding: 5px;
+  border-radius: 5px;
 }
 
 .filderFood{
@@ -135,6 +156,35 @@ border-radius: 5px;
   box-sizing:border-box;
 overflow: auto;
 
+}
+
+.paymentContainer{
+  display: flex;
+flex-direction: row;
+justify-content: unset;
+align-items: center;
+}
+.paymentMethode{
+  background-color: aliceblue;
+  border-radius: 10px;
+  padding:15px;
+  box-sizing: border-box;
+}
+.orderedFoodPic{
+  width:200px;
+overflow: hidden;
+height: 130px;
+margin: 15px;
+}
+
+.orderedFoodPic img{
+  width:110%;
+}
+
+.showUserCheckoutContainer{
+  display: grid;
+  grid-template-columns: 70% 1fr;
+  padding:15px;
 }
 
 .contentFood{
@@ -167,7 +217,7 @@ flex-direction: column;
   bottom: 0;
   right: 5px;
 }
-.dailyOfferContainer{
+.dailyOfferContainer, .cartContainer{
   width:100%;
   display: flex;
   justify-content: center;
@@ -176,6 +226,15 @@ flex-direction: column;
   box-sizing: border-box;
   background-color: #d50057;
   color:white;
+  position: relative;
+}
+.cartShowPaymentContainer{
+  width:100%;
+  display: flex;
+  justify-content: center;
+  align-items: first baseline;
+  padding: 30px;
+  box-sizing: border-box;
   position: relative;
 }
 .sideNav{
@@ -195,6 +254,11 @@ hr{
   width:100%;
   margin:10px auto;
 
+}
+.homePageText{
+  display:block;
+  margin:15px;
+  font-size:1.0rem;
 }
 .loginForm{
   width:360px;
@@ -288,6 +352,29 @@ hr{
     grid-template-columns: 100%;
     padding:15px;
   }
+  .showUserCheckoutContainer{
+    grid-template-columns: 100%;
+  }
+}
+
+.foodCount{
+  width: 25px;
+  height: 25px;
+  line-height: 25px;
+  border-radius: 50%;
+  font-size: 12px;
+  color: #fff;
+  text-align: center;
+  background: #d50057;
+  position: absolute;
+  right:-5px;
+  top:0px;
+  z-index:-1;
+}
+.showIconMobile{
+  width:80px;
+  margin:15px;
+  display: none;
 }
 
 .link{
@@ -299,11 +386,26 @@ hr{
   .sideNav{
     height:56px;
   }
+
+  .foodCount{
+    top:2px;
+    right:2px;
+    z-index:1;
+    width:20px;
+    height:20px;
+    line-height: 20px;
+  }
 }
 @media (max-width: 520px) {
 
+  .showIconMobile{
+    display: block;
+  }
   .loginFooter{
     display:block;
+  }
+  .homePageText{
+    display:none;
   }
 
   .dailyOfferContainer{
